@@ -23,6 +23,11 @@ public class MongoConfig extends AbstractReactiveMongoConfiguration {
     return "test";
   }
 
+  @Override
+  public MongoClient reactiveMongoClient() {
+    return MongoClients.create();
+  }
+
   @Bean
   public ReactiveMongoTemplate reactiveMongoTemplate() {
     return new ReactiveMongoTemplate(mongoClient(), getDatabaseName());
